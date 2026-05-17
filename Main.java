@@ -3,7 +3,23 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
+        /* Prueba de menú*/
+        int opt = Vista.menu();
+        System.out.println("La opción elegida fue "+opt);
 
+        /* Prueba de vista */
+        Tarea unaTarea = Vista.nuevaTarea();
+        System.out.println("[--->Aqui se mostrará una tarea<---");
+        System.out.println(unaTarea);
+
+        /* Prueba listarTareas(...) */
+        ArrayList<Tarea> misTareas = new ArrayList<>();
+        misTareas.add(new Tarea());
+        misTareas.add(new Tarea());
+        misTareas.add(new Tarea());
+        Vista.listarTareas(misTareas);
+
+        /*
         Scanner scanner = new Scanner(System.in);
 
         ArrayList<Tarea> listaTareas = new ArrayList<>();
@@ -108,5 +124,7 @@ public class Main {
             }
 
         } while (opcion != 0);
+
+         */
     }
 }
