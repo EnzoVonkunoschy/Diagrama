@@ -9,14 +9,13 @@ public class Main {
 
         /* Prueba de vista */
         Tarea unaTarea = Vista.nuevaTarea();
-        System.out.println("[--->Aqui se mostrará una tarea<---");
-        System.out.println(unaTarea);
+
 
         /* Prueba listarTareas(...) */
         ArrayList<Tarea> misTareas = new ArrayList<>();
-        misTareas.add(new Tarea());
-        misTareas.add(new Tarea());
-        misTareas.add(new Tarea());
+        misTareas.add(new Tarea(3, "Programación ", " práctico 1 ", null, null ));
+        misTareas.add(new Tarea(4, "Práctica ", " practico 2 ", null, null));
+        misTareas.add(new Tarea(5, "Sistema Operativo ", " práctico 3 ", null, null));
         Vista.listarTareas(misTareas);
 
         /*
