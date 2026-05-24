@@ -44,7 +44,7 @@ public class Vista {
      * @param misTareas
      */
     public static void listarTareas(ArrayList<Tarea> misTareas){
-        System.out.println("Lista de tareas:");
+        System.out.println("\n Lista de tareas -------------------");
         if (misTareas.isEmpty()) {
             System.out.println("No hay tareas cargadas.");
         } else {

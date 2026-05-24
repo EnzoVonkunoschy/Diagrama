@@ -59,20 +59,20 @@ public class Tarea {
 
     @Override
     public String toString() {
-        String contenido = "Nombre: " + nombre +
-                "Duración: " + duracion +
-                "Descripción: " + descripcion ;
+        String contenido = "\nNombre: " + nombre +
+                "\nDuración: " + duracion +
+                "\nDescripción: " + descripcion ;
 
         if (Antecesora != null){
-            contenido = contenido + "Antecesora: " + Antecesora.getNombre();
+            contenido = contenido + "\nAntecesora: " + Antecesora.getNombre();
         }else{
-            contenido = contenido +  "No existe antecesora";
+            contenido = contenido +  "\nNo existe antecesora";
         }
 
         if (Sucesora != null){
-            contenido = contenido + "Sucesora: " + Sucesora.getNombre();
+            contenido = contenido + "\nSucesora: " + Sucesora.getNombre();
         }else{
-            contenido = contenido + "No existe sucesora";
+            contenido = contenido + "\nNo existe sucesorax";
         }
         return contenido;
     }
