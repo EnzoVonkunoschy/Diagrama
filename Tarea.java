@@ -56,4 +56,24 @@ public class Tarea {
     public void setSucesora(Tarea sucesora) {
         Sucesora = sucesora;
     }
+
+    @Override
+    public String toString() {
+        String contenido = "\nNombre: " + nombre +
+                "\nDuración: " + duracion +
+                "\nDescripción: " + descripcion ;
+
+        if (Antecesora != null){
+            contenido = contenido + "\nAntecesora: " + Antecesora.getNombre();
+        }else{
+            contenido = contenido +  "\nNo existe antecesora";
+        }
+
+        if (Sucesora != null){
+            contenido = contenido + "\nSucesora: " + Sucesora.getNombre();
+        }else{
+            contenido = contenido + "\nNo existe sucesorax";
+        }
+        return contenido;
+    }
 }
