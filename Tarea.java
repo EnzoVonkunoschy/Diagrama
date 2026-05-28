@@ -1,20 +1,30 @@
+import java.util.ArrayList;
 
 public class Tarea {
     private int duracion;
     private String nombre;
     private String descripcion;
-    private Tarea Antecesora;
-    private Tarea Sucesora;
+    private ArrayList <Tarea> Antecesora;
+    private ArrayList <Tarea> Sucesora;
 
     public Tarea() {
     }
 
-    public Tarea(int duracion, String nombre, String descripcion, Tarea antecesora, Tarea sucesora) {
+    public Tarea(int duracion, String nombre, String descripcion, ArrayList<Tarea> antecesora, ArrayList<Tarea> sucesora) {
         this.duracion = duracion;
         this.nombre = nombre;
         this.descripcion = descripcion;
-        Antecesora = antecesora;
-        Sucesora = sucesora;
+        if (antecesora != null) {
+            this.Antecesora = antecesora;
+        }else {
+            this.Antecesora = new ArrayList<>();
+        }
+
+        if (sucesora != null) {
+            this.Sucesora = sucesora;
+        }else {
+            this.Sucesora = new ArrayList<>();
+        }
     }
 
     public int getDuracion() {
@@ -41,19 +51,19 @@ public class Tarea {
         this.descripcion = descripcion;
     }
 
-    public Tarea getAntecesora() {
+    public ArrayList<Tarea> getAntecesora() {
         return Antecesora;
     }
 
-    public void setAntecesora(Tarea antecesora) {
+    public void setAntecesora(ArrayList<Tarea> antecesora) {
         Antecesora = antecesora;
     }
 
-    public Tarea getSucesora() {
+    public ArrayList<Tarea> getSucesora() {
         return Sucesora;
     }
 
-    public void setSucesora(Tarea sucesora) {
+    public void setSucesora(ArrayList<Tarea> sucesora) {
         Sucesora = sucesora;
     }
 
@@ -64,15 +74,21 @@ public class Tarea {
                 "\nDescripción: " + descripcion ;
 
         if (Antecesora != null){
-            contenido = contenido + "\nAntecesora: " + Antecesora.getNombre();
+            for (int i = 0; i < Antecesora.size(); i++) {
+                Tarea tarea = Antecesora.get(i);
+                contenido = contenido + "\nAntecesora: " + tarea.getNombre();
+            }
         }else{
             contenido = contenido +  "\nNo existe antecesora";
         }
 
-        if (Sucesora != null){
-            contenido = contenido + "\nSucesora: " + Sucesora.getNombre();
+        if (Sucesora != null && !Sucesora.isEmpty()){
+            for (int i = 0; i < Sucesora.size(); i++) {
+                Tarea tarea = Sucesora.get(i);
+                contenido = contenido + "\nSucesora: " + tarea.getNombre();
+            }
         }else{
-            contenido = contenido + "\nNo existe sucesorax";
+            contenido = contenido + "\nNo existe sucesora";
         }
         return contenido;
     }
