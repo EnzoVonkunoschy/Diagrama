@@ -13,9 +13,9 @@ public class Main {
 
         /* Prueba listarTareas(...) */
         ArrayList<Tarea> misTareas = new ArrayList<>();
-        misTareas.add(new Tarea(3, "Programación ", " práctico 1 ", null, null ));
-        misTareas.add(new Tarea(4, "Práctica ", " practico 2 ", null, null));
-        misTareas.add(new Tarea(5, "Sistema Operativo ", " práctico 3 ", null, null));
+        misTareas.add(new Tarea(3, "Programación ", " práctico 1 ",  new ArrayList<>(), new ArrayList<>()));
+        misTareas.add(new Tarea(4, "Práctica ", " practico 2 ", new ArrayList<>(), new ArrayList<>()));
+        misTareas.add(new Tarea(5, "Sistema Operativo ", " práctico 3 ",new ArrayList<>(), new ArrayList<>()));
         Vista.listarTareas(misTareas);
 
         /*
