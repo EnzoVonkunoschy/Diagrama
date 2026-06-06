@@ -1,6 +1,8 @@
 import java.util.ArrayList;
+import java.util.UUID;
 
 public class Tarea {
+    private final String id ;
     private int duracion;
     private String nombre;
     private String descripcion;
@@ -8,9 +10,11 @@ public class Tarea {
     private ArrayList <Tarea> Sucesora;
 
     public Tarea() {
+        this.id = UUID.randomUUID().toString();
     }
 
     public Tarea(int duracion, String nombre, String descripcion, ArrayList<Tarea> antecesora, ArrayList<Tarea> sucesora) {
+        this.id = UUID.randomUUID().toString();
         this.duracion = duracion;
         this.nombre = nombre;
         this.descripcion = descripcion;
