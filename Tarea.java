@@ -11,6 +11,8 @@ public class Tarea {
 
     public Tarea() {
         this.id = UUID.randomUUID().toString();
+        this.Antecesora= new ArrayList<>();
+        this.Sucesora= new ArrayList<>();
     }
 
     public Tarea(int duracion, String nombre, String descripcion, ArrayList<Tarea> antecesora, ArrayList<Tarea> sucesora) {
@@ -28,6 +30,21 @@ public class Tarea {
             this.Sucesora = sucesora;
         }else {
             this.Sucesora = new ArrayList<>();
+        }
+    }
+    public void addAntecesora(Tarea tarea){
+        Antecesora.add(tarea);
+
+        if (!tarea.Sucesora.contains(this)) {
+            tarea.Sucesora.add(this);
+        }
+    }
+
+    public void addSucesora(Tarea tarea){
+        Sucesora.add(tarea);
+
+        if (!tarea.Antecesora.contains(this)) {
+            tarea.Antecesora.add(this);
         }
     }
 
@@ -77,13 +94,13 @@ public class Tarea {
                 "\nDuración: " + duracion +
                 "\nDescripción: " + descripcion ;
 
-        if (Antecesora != null){
+        if (Antecesora != null && ! Antecesora.isEmpty()){
             for (int i = 0; i < Antecesora.size(); i++) {
                 Tarea tarea = Antecesora.get(i);
-                contenido = contenido + "\nAntecesora: " + tarea.getNombre();
+                contenido += "\nAntecesora: " + tarea.getNombre();
             }
         }else{
-            contenido = contenido +  "\nNo existe antecesora";
+            contenido +=  "\nNo existe antecesora";
         }
 
         if (Sucesora != null && !Sucesora.isEmpty()){
@@ -95,5 +112,18 @@ public class Tarea {
             contenido = contenido + "\nNo existe sucesora";
         }
         return contenido;
+
     }
-}
+
+    private String listarAntecesoras() {
+        String contenido = "";
+
+        for (Tarea tarea : Antecesora) {
+            contenido += "\nAntecesora: " + tarea.getNombre();
+            contenido += tarea.listarAntecesoras();
+        }
+
+        return contenido;
+    }
+
+        }
