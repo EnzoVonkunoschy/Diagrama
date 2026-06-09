@@ -16,5 +16,6 @@ public class Test {
         Tarea tarea01 = new Tarea();
         tarea01.setNombre("Sacar herramientas");
         tarea02.addAntecesora(tarea01);
+        System.out.println(tarea03);
     }
 }

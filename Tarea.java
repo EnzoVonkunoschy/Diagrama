@@ -80,7 +80,8 @@ public class Tarea {
         if (Antecesora != null){
             for (int i = 0; i < Antecesora.size(); i++) {
                 Tarea tarea = Antecesora.get(i);
-                contenido = contenido + "\nAntecesora: " + tarea.getNombre();
+                String tareaIndentada = tarea.toString().replace("\n", "\n            ");
+                contenido = contenido + "\nAntecesora: " + tareaIndentada;
             }
         }else{
             contenido = contenido +  "\nNo existe antecesora";
@@ -89,11 +90,27 @@ public class Tarea {
         if (Sucesora != null && !Sucesora.isEmpty()){
             for (int i = 0; i < Sucesora.size(); i++) {
                 Tarea tarea = Sucesora.get(i);
+
                 contenido = contenido + "\nSucesora: " + tarea.getNombre();
             }
         }else{
             contenido = contenido + "\nNo existe sucesora";
         }
         return contenido;
+    }
+
+    public void addAntecesora(Tarea tarea02) {
+        if (getAntecesora() == null){
+            ArrayList<Tarea> tareas = new ArrayList<>();
+            tareas.add(tarea02);
+            setAntecesora(tareas);
+        }else {
+            ArrayList<Tarea> tareas2 = getAntecesora();
+            tareas2.add(tarea02);
+            setAntecesora(tareas2);
+        }
+
+
+
     }
 }
