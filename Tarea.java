@@ -63,6 +63,13 @@ public class Tarea {
         Antecesora = antecesora;
     }
 
+    public void addAntecesora(Tarea tarea) {
+        if (getAntecesora() == null) {
+            setAntecesora(new ArrayList<Tarea>());
+        }
+        getAntecesora().add(tarea);
+    }
+
     public ArrayList<Tarea> getSucesora() {
         return Sucesora;
     }
@@ -80,7 +87,8 @@ public class Tarea {
         if (Antecesora != null){
             for (int i = 0; i < Antecesora.size(); i++) {
                 Tarea tarea = Antecesora.get(i);
-                contenido = contenido + "\nAntecesora: " + tarea.getNombre();
+                String identacion1 = tarea.toString().replace("\n", "\n         ");
+                contenido = contenido + "\nAntecesora: " + identacion1;
             }
         }else{
             contenido = contenido +  "\nNo existe antecesora";
@@ -89,7 +97,8 @@ public class Tarea {
         if (Sucesora != null && !Sucesora.isEmpty()){
             for (int i = 0; i < Sucesora.size(); i++) {
                 Tarea tarea = Sucesora.get(i);
-                contenido = contenido + "\nSucesora: " + tarea.getNombre();
+                String identacion2 = tarea.toString().replace("\n", "\n         ");
+                contenido = contenido + "\nSucesora: " + identacion2;
             }
         }else{
             contenido = contenido + "\nNo existe sucesora";
