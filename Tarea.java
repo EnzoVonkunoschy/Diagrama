@@ -11,6 +11,8 @@ public class Tarea {
 
     public Tarea() {
         this.id = UUID.randomUUID().toString();
+        this.Antecesora = new ArrayList<>();
+        this.Sucesora = new ArrayList<>();
     }
 
     public Tarea(int duracion, String nombre, String descripcion, ArrayList<Tarea> antecesora, ArrayList<Tarea> sucesora) {
@@ -70,29 +72,22 @@ public class Tarea {
     public void setSucesora(ArrayList<Tarea> sucesora) {
         Sucesora = sucesora;
     }
-
+    //este metodo no lo habian creado y lo usan en test  a mi me daba error asi que se lo agrwegue para que no me diera error
+    public void addAntecesora(Tarea tarea) {
+        this.Antecesora.add(tarea);
+    }
     @Override
     public String toString() {
-        String contenido = "\nNombre: " + nombre +
-                "\nDuración: " + duracion +
-                "\nDescripción: " + descripcion ;
-
-        if (Antecesora != null){
-            for (int i = 0; i < Antecesora.size(); i++) {
-                Tarea tarea = Antecesora.get(i);
-                contenido = contenido + "\nAntecesora: " + tarea.getNombre();
+        return armado("");
+    }
+    private String armado(String sangria) {
+        String contenido = "\n" + sangria + "Nombre: " + nombre +
+                "\n" + sangria + "Duración: " + duracion +
+                "\n" + sangria + "Descripción: " + descripcion ;
+        if (Antecesora != null && !Antecesora.isEmpty()) {
+            for (Tarea tarea : Antecesora) {
+                contenido += tarea.armado(sangria + "            ");
             }
-        }else{
-            contenido = contenido +  "\nNo existe antecesora";
-        }
-
-        if (Sucesora != null && !Sucesora.isEmpty()){
-            for (int i = 0; i < Sucesora.size(); i++) {
-                Tarea tarea = Sucesora.get(i);
-                contenido = contenido + "\nSucesora: " + tarea.getNombre();
-            }
-        }else{
-            contenido = contenido + "\nNo existe sucesora";
         }
         return contenido;
     }
