@@ -73,29 +73,21 @@ public class Tarea {
 
     @Override
     public String toString() {
-        String contenido = "\nNombre: " + nombre +
-                "\nDuración: " + duracion +
-                "\nDescripción: " + descripcion ;
+        String contenido = "\nNombre: "      + nombre +
+                           "\nDuración: "    + duracion +
+                           "\nDescripción: " + descripcion ;
 
         if (Antecesora != null){
             for (int i = 0; i < Antecesora.size(); i++) {
+
                 Tarea tarea = Antecesora.get(i);
-                String tareaIndentada = tarea.toString().replace("\n", "\n            ");
+
+                String tareaIndentada = tarea.toString().replace("\n","\n            ");
                 contenido = contenido + "\nAntecesora: " + tareaIndentada;
             }
-        }else{
-            contenido = contenido +  "\nNo existe antecesora";
         }
 
-        if (Sucesora != null && !Sucesora.isEmpty()){
-            for (int i = 0; i < Sucesora.size(); i++) {
-                Tarea tarea = Sucesora.get(i);
 
-                contenido = contenido + "\nSucesora: " + tarea.getNombre();
-            }
-        }else{
-            contenido = contenido + "\nNo existe sucesora";
-        }
         return contenido;
     }
 
