@@ -11,8 +11,9 @@ public class Tarea {
 
     public Tarea() {
         this.id = UUID.randomUUID().toString();
+        this.Antecesora = new ArrayList<>();
+        this.Sucesora = new ArrayList<>();
     }
-
     public Tarea(int duracion, String nombre, String descripcion, ArrayList<Tarea> antecesora, ArrayList<Tarea> sucesora) {
         this.id = UUID.randomUUID().toString();
         this.duracion = duracion;
@@ -71,29 +72,31 @@ public class Tarea {
         Sucesora = sucesora;
     }
 
+    public void addAntecesora (Tarea tarea){
+        this.Antecesora.add (tarea);
+    }
+
+    public void addSucesora (Tarea tarea){
+        this.Sucesora.add (tarea);
+    }
+
     @Override
     public String toString() {
-        String contenido = "\nNombre: " + nombre +
-                "\nDuración: " + duracion +
-                "\nDescripción: " + descripcion ;
-
-        if (Antecesora != null){
-            for (int i = 0; i < Antecesora.size(); i++) {
-                Tarea tarea = Antecesora.get(i);
-                contenido = contenido + "\nAntecesora: " + tarea.getNombre();
-            }
-        }else{
-            contenido = contenido +  "\nNo existe antecesora";
-        }
-
-        if (Sucesora != null && !Sucesora.isEmpty()){
-            for (int i = 0; i < Sucesora.size(); i++) {
-                Tarea tarea = Sucesora.get(i);
-                contenido = contenido + "\nSucesora: " + tarea.getNombre();
-            }
-        }else{
-            contenido = contenido + "\nNo existe sucesora";
-        }
-        return contenido;
+        return mostrarConIndentacion(0);
     }
+    private String mostrarConIndentacion(int nivel){
+        String margen = " ";
+        for (int i = 0; i < nivel; i++){
+            margen += " ";
+        }
+    String contenido = "\n" + margen + "Nombre:" + nombre +
+            "\n" + margen + "Duración: " + duracion +
+            "\n" + margen + "Descripción: " + descripcion;
+    if (!Antecesora.isEmpty()){
+        for (Tarea tarea : Antecesora){
+            contenido += tarea.mostrarConIndentacion(nivel + 1);
+        }
+    }
+    return contenido;
+}
 }
