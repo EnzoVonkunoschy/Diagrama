@@ -27,5 +27,12 @@ public class Test {
         tarea05.setNombre("Tarea 05");
         tarea04.addAntecesora(tarea05);
         System.out.println(tarea03);
+
+        System.out.println("Con LocalStorage ----------------------------");
+
+        LocalStorage.setItem("C:/Diagrama/miArchivo.txt",tarea03);
+        Object miObjeto = LocalStorage.getItem("C:/Diagrama/miArchivo.txt");
+        Tarea miTarea = (Tarea) miObjeto;
+        System.out.println(miTarea);
     }
 }
