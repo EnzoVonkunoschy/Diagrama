@@ -1,7 +1,8 @@
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.UUID;
 
-public class Tarea {
+public class Tarea implements Serializable {
     private final String id ;
     private int duracion;
     private String nombre;
